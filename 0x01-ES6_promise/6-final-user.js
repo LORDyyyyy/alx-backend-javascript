@@ -8,6 +8,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
       data.forEach((value) => {
         result.push({ status: value.status, value });
       });
+      console.log(result)
       return result;
     });
 }
