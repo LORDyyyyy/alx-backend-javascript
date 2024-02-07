@@ -3,13 +3,9 @@ var Subjects;
     var Subject = /** @class */ (function () {
         function Subject() {
         }
-        Object.defineProperty(Subject.prototype, "setTeacher", {
-            set: function (teacher) {
-                this.teacher = teacher;
-            },
-            enumerable: false,
-            configurable: true
-        });
+        Subject.prototype.setTeacher = function (teacher) {
+            this.teacher = teacher;
+        };
         return Subject;
     }());
     Subjects.Subject = Subject;
