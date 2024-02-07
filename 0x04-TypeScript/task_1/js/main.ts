@@ -7,14 +7,25 @@ interface Teacher {
     [key: string]: any;
 };
 
-const teacher3: Teacher = {
-  firstName: 'John',
-  fullTimeEmployee: false,
-  lastName: 'Doe',
-  location: 'London',
-  contract: false,
-  salary: 1000
+interface Directors extends Teacher {
+    numberOfReports: number;
 };
 
+const director1: Directors = {
+    firstName: 'John',
+    lastName: 'Doe',
+    location: 'London',
+    fullTimeEmployee: true,
+    numberOfReports: 17,
+};
 
-console.log(teacher3);
+interface printTeacherFunction {
+    (first: string, last: string): string;
+};
+
+const printTeacher: printTeacherFunction = (first: string, last: string): string => `${first[0]}. ${last}`;
+
+console.log(printTeacher("John", "Doe"));
+
+
+console.log(director1);
