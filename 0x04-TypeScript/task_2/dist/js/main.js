@@ -42,6 +42,9 @@ function executeWork(employee) {
         console.log(employee.workTeacherTasks());
     }
 }
-executeWork(createEmployee(200));
-executeWork(createEmployee(1000));
+function teachClass(todayClass) {
+    return (todayClass == "Math" ? 'Teaching Math' : 'Teaching History');
+}
+console.log(teachClass('Math'));
+console.log(teachClass('History'));
 //# sourceMappingURL=main.js.map
