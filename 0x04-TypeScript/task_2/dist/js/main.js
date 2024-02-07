@@ -31,7 +31,17 @@ var Teacher = /** @class */ (function () {
 function createEmployee(salary) {
     return (typeof salary === 'number' && salary < 500 ? new Teacher() : new Director());
 }
-console.log(createEmployee(200));
-console.log(createEmployee(1000));
-console.log(createEmployee('$500'));
+function isDirector(employee) {
+    return (employee instanceof Director);
+}
+function executeWork(employee) {
+    if (isDirector(employee)) {
+        console.log(employee.workDirectorTasks());
+    }
+    else {
+        console.log(employee.workTeacherTasks());
+    }
+}
+executeWork(createEmployee(200));
+executeWork(createEmployee(1000));
 //# sourceMappingURL=main.js.map
