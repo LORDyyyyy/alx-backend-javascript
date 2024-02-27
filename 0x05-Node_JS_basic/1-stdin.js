@@ -9,9 +9,9 @@ if (!process.stdin.isTTY) {
   process.on('exit', () => {
     process.stdout.write('This important software is now closing\n');
   });
-} else {
-  process.stdin.on('data', (data) => {
-    process.stdout.write(`Your name is: ${data.toString()}\n`);
-    process.exit();
-  });
 }
+
+process.stdin.on('data', (data) => {
+  process.stdout.write(`Your name is: ${data.toString().trim()}\n`);
+  process.exit();
+});
