@@ -11,7 +11,7 @@ function countStudents(path) {
       const numberOfStd = data.length;
       const fields = {};
 
-      for (const i in data) {
+      for (const i in data) { // eslint-disable-line guard-for-in
         const line = data[i].split(',');
         if (!fields[line[3]]) {
           fields[line[3]] = [];
@@ -26,7 +26,7 @@ function countStudents(path) {
     } catch (err) {
       reject(new Error('Cannot load the database'));
     }
-  })
+  });
 }
 
 module.exports = countStudents;
