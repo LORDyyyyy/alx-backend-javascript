@@ -9,7 +9,7 @@ function countStudents(path) {
       data = data.split('\n').filter((line) => line.trim() !== '');
       data.shift();
       const numberOfStd = data.length;
-      let output = '';
+      let output = 'This is the list of our students\n';
       const fields = {};
 
       for (const i in data) { // eslint-disable-line guard-for-in
