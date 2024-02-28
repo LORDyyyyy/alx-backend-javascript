@@ -9,7 +9,7 @@ function countStudents(path) {
       data = data.split('\n').filter((line) => line.trim() !== '');
       data.shift();
       const numberOfStd = data.length;
-      let output = 'This is the list of our students\n';
+      let output = '';
       const fields = {};
 
       for (const i in data) { // eslint-disable-line guard-for-in
@@ -36,12 +36,13 @@ module.exports = countStudents;
 const app = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/plain');
   if (req.url === '/students') {
+    res.write('This is the list of our students\n');
     countStudents(process.argv[2].toString())
       .then((data) => {
         res.end(data);
       })
-      .catch((err) => {
-        response.statusCode = 404;
+      .catch(() => {
+        res.statusCode = 404;
         res.end('Cannot load the database');
       });
   } else {
