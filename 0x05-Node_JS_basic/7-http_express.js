@@ -1,0 +1,46 @@
+const express = require('express');
+const fs = require('fs');
+
+let data = null;
+function countStudents(path) {
+  return new Promise((resolve, reject) => {
+    try {
+      data = fs.readFileSync(path, 'utf-8');
+      data = data.split('\n').filter((line) => line.trim() !== '');
+      data.shift();
+      const numberOfStd = data.length;
+      let output = '';
+      const fields = {};
+
+      for (const i in data) { // eslint-disable-line guard-for-in
+        const line = data[i].split(',');
+        if (!fields[line[3]]) {
+          fields[line[3]] = [];
+        }
+        fields[line[3]].push(line[0]);
+      }
+      output += `Number of students: ${numberOfStd}\n`;
+      Object.keys(fields).forEach((field) => {
+        output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
+      });
+      resolve(output.trim());
+    } catch (err) {
+      // eslint-disable-next-line prefer-promise-reject-errors
+      reject('Cannot load the database');
+    }
+  });
+}
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello Holberton School!');
+});
+
+app.get('/students', (req, res) => {
+  res.send('This is the list of our students\n');
+  res.send(countStudents(process.argv[2]));
+});
+
+app.listen(1245);
+module.exports = app;
