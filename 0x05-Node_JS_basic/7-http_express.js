@@ -38,8 +38,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
-  res.send('This is the list of our students\n');
-  res.send(countStudents(process.argv[2]));
+  countStudents(process.argv[2])
+    .then((data) => res.send(`This is the list of our students\n${data}`))
+    .catch(() => {
+      res.statusCode = 404;
+      res.send('This is the list of our students\nCannot load the database');
+    });
 });
 
 app.listen(1245);
