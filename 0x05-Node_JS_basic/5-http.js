@@ -41,7 +41,8 @@ const app = http.createServer((req, res) => {
         res.end(data);
       })
       .catch((err) => {
-        res.end(err);
+        response.statusCode = 404;
+        res.end('Cannot load the database');
       });
   } else {
     res.end('Hello Holberton School!');
