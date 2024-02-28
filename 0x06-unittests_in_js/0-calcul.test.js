@@ -1,6 +1,6 @@
 const { it, describe } = require("mocha");
 const assert = require('assert');
-const calcul = require('../0-calcul.js');
+const calcul = require('./0-calcul.js');
 
 
 describe('First UnitTest', () => {
