@@ -15,10 +15,6 @@ function readDatabase(path) {
         }
         fields[line[3]].push(line[0]);
       }
-      // console.log(`Number of students: ${numberOfStd}`);
-      // Object.keys(fields).forEach((field) => {
-      //   console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
-      // });
       resolve(fields);
     } catch (err) {
       reject(err.message);
