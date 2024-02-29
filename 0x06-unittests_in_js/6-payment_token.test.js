@@ -1,4 +1,3 @@
-const sinon = require('sinon');
 const assert = require('assert');
 const getPaymentTokenFromAPI = require('./6-payment_token.js')
 
