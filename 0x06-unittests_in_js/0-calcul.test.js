@@ -43,4 +43,14 @@ describe('calculateNumber', () => {
         const result = calcul(1.5, 3.7);
         assert.strictEqual(result, 6);
     });
+
+    it('Are Equal', () => {
+        const result = calcul(-1.7, -2);
+        assert.strictEqual(result, -4);
+    });
+
+    it('Are Equal', () => {
+        const result = calcul(-1, -2.7);
+        assert.strictEqual(result, -4);
+    });
 });
