@@ -15,5 +15,12 @@ describe('Index page', () => {
             expect(body).to.equal('Welcome to the payment system');
         });
     });
+
+    it('responds with correct headers', async () => {
+        request(url, (err, res, body) => {
+            expect(res.headers['content-type']).to.equal('text/html; charset=utf-8');
+            expect(res.headers['content-length']).to.equal('29');
+        });
+    });
 });
 
